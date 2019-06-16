@@ -14,7 +14,7 @@ public class Store {
         condition = lock.newCondition();
     }
 
-    synchronized void put() {
+    void put() {
         lock.lock();
         try {
             while (counter >= 3){
@@ -31,7 +31,7 @@ public class Store {
         }
     }
 
-    synchronized void get() {
+    void get() {
         lock.lock();
         try {
             while (counter < 1){
