@@ -1,0 +1,15 @@
+package demoThreads.auction;
+
+import java.util.Random;
+
+public class Main {
+    public static void main(String[] args) {
+        Auction auction = new Auction();
+        int startPrice = new Random().nextInt(100);
+        for (int i = 0; i < 5; i++) {
+            Bid bid = new Bid(i, startPrice, auction.getBarrier());
+            auction.addBid(bid);
+            bid.start();
+        }
+    }
+}

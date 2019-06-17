@@ -4,22 +4,20 @@ import java.util.LinkedList;
 import java.util.concurrent.TimeUnit;
 
 public class Main {
-    public static void main(String[] args) throws InterruptedException {
-        LinkedList<String> list = new LinkedList<String>(){
+    public static void main(String[] args) {
+        LinkedList<AudioChannel> list = new LinkedList<AudioChannel>() {
             {
-                this.add("0");
-                this.add("1");
-                this.add("2");
-                this.add("3");
-                this.add("4");
+                this.add(new AudioChannel(771));
+                this.add(new AudioChannel(883));
+                this.add(new AudioChannel(550));
+                this.add(new AudioChannel(337));
+                this.add(new AudioChannel(442));
             }
         };
-        ChannelPool<String> pool = new ChannelPool<>(list);
-        TimeUnit.SECONDS.sleep(2); //ЕСЛИ УБРАТЬ ТО В ВЫВОДЕ БУДЕТ null??? НЕ УСПЕВАЕТ ИНИЦИАЛИЗИРОВАТЬ pool а User уже берут значения???
+        ChannelPool<AudioChannel> pool = new ChannelPool<>(list);
         for (int i = 0; i < 20; i++) {
             new User(pool).start();
         }
     }
-
 
 }
