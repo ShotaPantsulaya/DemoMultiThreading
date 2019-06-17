@@ -25,6 +25,7 @@ public class Truck implements Runnable {
     }
 
     @Override
+
     public void run() {
         loadTruck();
         phaser.arriveAndAwaitAdvance();
